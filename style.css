@@ -1,0 +1,82 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+}
+
+body {
+    text-align:center;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#sessions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    counter-reset: reversed(session-counter);
+}
+
+li {
+    --size: 20vw;
+    display: grid;
+    place-content: center center;
+    height: var(--size);
+    width: var(--size);
+    border-radius: 100%;
+    font-size: calc(var(--size)/3);
+    font-weight: bold;
+
+    &:last-child time {
+        font-size: .75em;
+    }
+
+    list-style: none;
+    &:not(:last-child) {
+        counter-increment: session-counter;
+        &::before {
+            content: counter(session-counter);
+        }
+    }
+
+    &:nth-last-child(n + 1) {
+        background: olivedrab;
+    }
+    &:nth-last-child(n + 5) {
+        background: orange;
+    } 
+    &:nth-last-child(n + 8) {
+        background: tomato;
+    }
+    &:last-child {
+        background: silver;
+    }
+}
+
+
+
+
+
+
