@@ -1,3 +1,5 @@
+import './theme.js';
+
 const ul = document.getElementById('sessions');
 const timer = document.getElementById('timer');
 const params = new URLSearchParams(location.search);
@@ -11,7 +13,7 @@ try {
 catch(ignore) { }
 
 let session = 1000 * 60 * minutes;
-console.log({ session })
+
 const format = s => s.toString().padStart(2, '0');
 function updateTimeRemaining(time) {
     const ms = session - (time - start);
