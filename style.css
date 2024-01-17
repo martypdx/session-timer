@@ -39,6 +39,12 @@ h1 {
     counter-reset: reversed(session-counter);
 }
 
+time {
+    font-size: .75em;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+}
+
 li {
     --size: 20vw;
     display: grid;
@@ -49,9 +55,7 @@ li {
     font-size: calc(var(--size)/3);
     font-weight: bold;
 
-    &:last-child time {
-        font-size: .75em;
-    }
+
 
     list-style: none;
     &:not(:last-child) {
