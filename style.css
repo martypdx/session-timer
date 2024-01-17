@@ -25,6 +25,7 @@
 
 body {
     text-align:center;
+    margin: 0;
 }
 
 h1 {
@@ -33,10 +34,14 @@ h1 {
 }
 
 #sessions {
+    --size: 20vw;
+    --gap: 3vw;
+    padding: 0;
+    margin: 0 auto;
+    width: calc((4 * var(--size)) + (3 * var(--gap)));
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    counter-reset: reversed(session-counter);
+    gap: var(--gap);
 }
 
 time {
@@ -46,7 +51,6 @@ time {
 }
 
 li {
-    --size: 20vw;
     display: grid;
     place-content: center center;
     height: var(--size);
@@ -65,13 +69,13 @@ li {
         }
     }
 
-    &:nth-last-child(n + 1) {
+    &:nth-child(n - 3) {
         background: olivedrab;
     }
-    &:nth-last-child(n + 5) {
+    &:nth-child(n + 4) {
         background: orange;
     } 
-    &:nth-last-child(n + 8) {
+    &:nth-child(n + 7) {
         background: tomato;
     }
     &:last-child {
