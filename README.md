@@ -1,6 +1,6 @@
 # Flow of Work Sessions Timer
 
-Simple pomodoro-style timer across multiple sessions
+Simple pomodoro-style [timer across multiple sessions](https://martypdx.github.io/session-timer/).
 
 ## Session Timer
 
