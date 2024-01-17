@@ -22,6 +22,8 @@ https://martypdx.github.io/session-timer/?minutes=15
 - break reminders: color of session goes from green to yellow to red
 - refresh that page to start tracking sessions again
 
-# Theme
+## Theme
 
-light, auto (system), dark
+- ○ light
+- ◑ auto (system)
+- ● dark
