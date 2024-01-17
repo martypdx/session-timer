@@ -10,7 +10,7 @@ try {
 }
 catch(ignore) { }
 
-let session = 1000 * 3; //60 * minutes;
+let session = 1000 * 60 * minutes;
 console.log({ session })
 const format = s => s.toString().padStart(2, '0');
 function updateTimeRemaining(time) {
@@ -29,7 +29,7 @@ let interval = setInterval(() => {
     if(time - start > session) {
         ul.prepend(document.createElement('li'));
         queueMicrotask(() => {
-            // alert('session complete!');
+            alert('session complete!');
             start = new Date();
             updateTimeRemaining(start);
         });
