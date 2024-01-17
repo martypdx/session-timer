@@ -8,6 +8,14 @@ Simple pomodoro-style timer across multiple sessions
 - alerts when a session has completed
 - confirmation of alert starts next session
 
+## Session Duration
+
+Default session duration is 25 minutes. Add a search parameter to the url to change the duration:
+
+```
+https://martypdx.github.io/session-timer/?minutes=15
+```
+
 ## Session Tracking
 
 - adds (and counts) number of sessions
