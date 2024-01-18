@@ -1,6 +1,6 @@
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
+    line-height: 1.2;
     font-weight: 400;
 
     font-synthesis: none;
@@ -44,27 +44,81 @@ html {
 
 body {
     margin: 0;
+    padding: 2vw 4vw;
     color: var(--color);
     background: var(--background);
 }
 
 header {
-    display: grid;
-    justify-content: end;
-    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 4vw
+}
 
-    select.theme {
-        border: 0;
+section.work-play {
+
+    button {
         outline: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
         appearance: none;
-
-        font-family: 'Arial';
-        font-size: 1.5em;
-        opacity: .25;
-        color: var(--color);
         background: transparent;
-        cursor: pointer;
+
+        &:has(input:checked)+.focus {
+            display: block;
+        }
     }
+
+    label {
+        opacity: .9;
+        font-size: 3em;
+        cursor: pointer;
+
+        &::before {
+            position: relative;
+            content: '🛝';
+            top: -0.25em;
+        }
+
+        &:has(input:checked)::before {
+            position: relative;
+            content: '🎯';
+            top: -.28em;
+        }
+
+        input {
+            display: none;
+        }
+    }
+
+    .focus {
+        display: none;
+
+        p {
+            font-size: 1.2em;
+        }
+
+        *[contenteditable]:empty:not(:focus):before {
+            content: attr(aria-placeholder);
+            opacity: .8
+        }
+    }
+
+}
+
+select.theme {
+    border: 0;
+    outline: 0;
+    appearance: none;
+
+    font-family: 'Arial';
+    font-size: 2em;
+    opacity: .25;
+    color: var(--color);
+    background: transparent;
+    cursor: pointer;
 }
 
 html.dark select.theme {
@@ -128,8 +182,8 @@ time {
 
 footer {
     position: absolute;
-    left: 10px;
-    bottom: 10px;
+    left: 1vw;
+    bottom: 1vw;
     opacity: 0.7;
 
     a,

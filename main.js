@@ -1,4 +1,5 @@
 import './theme.js';
+import './focus.js';
 
 if(Notification) {
     if(Notification.permission !== 'granted' && Notification.permission !== 'denied') {

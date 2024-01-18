@@ -15,7 +15,18 @@
 
 <body>
     <header>
-        <select class="theme">
+        <section class="work-play">
+            <button>
+                <label>
+                    <input name="check-working" type="checkbox" checked>
+                </label>
+            </button>
+            <div class="focus">
+                <h1 contenteditable aria-label="priority" aria-placeholder="Declared Priority"></h1>
+                <p contenteditable aria-label="exit" aria-placeholder="Clear exist seen and understood"></p>
+            </div>
+        </section>
+        <select name="select-theme" class="theme">
             <option value="light" title="light theme">🌇</option>
             <option class="auto" value="" title="auto" selected>⚙️</option>
             <option value="dark" title="dark theme">🌃</option>

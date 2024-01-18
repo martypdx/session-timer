@@ -1,7 +1,7 @@
 const select = document.querySelector('select.theme');
 const html = document.querySelector('html');
 
-const THEME_KEY = 'selected-theme'
+const THEME_KEY = 'theme.mode'
 const themes = { light: 'light', dark: 'dark' };
 const selectedTheme = themes[localStorage.getItem(THEME_KEY)];
 if(selectedTheme) setTheme(select.value = selectedTheme);
