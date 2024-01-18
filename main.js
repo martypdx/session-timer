@@ -59,7 +59,9 @@ function startInterval() {
             queueMicrotask(() => {
                 start = new Date();
                 updateTimeRemaining(start);
+
                 const next = () => {
+                    window.focus();
                     start = new Date();
                     updateTimeRemaining(start);
                     startInterval();
