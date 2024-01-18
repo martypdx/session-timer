@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚥</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚥</text></svg>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Presence Timer</title>
     <link rel="stylesheet" href="style.css">
@@ -13,23 +14,25 @@
 </head>
 
 <body>
-    <select id="theme-select">
-        <option value="light" title="light theme">○</option>
-        <option class="auto" value="" title="auto" selected>◑</option>
-        <option value="dark" title="dark theme">●</option>
-    </select>
+    <header>
+        <select class="theme">
+            <option value="light" title="light theme">🌇</option>
+            <option class="auto" value="" title="auto" selected>⚙️</option>
+            <option value="dark" title="dark theme">🌃</option>
+        </select>
+    </header>
 
-    <h1>Flow of Work</h1>
-    
-    <ol id="sessions">
-        <li>
-            <time id="timer" datetime="25:00">25:00</time>
-        </li>
-    </ol>
-    
+    <main>
+        <ol id="sessions">
+            <li>
+                <time id="timer" datetime="25:00">25:00</time>
+            </li>
+        </ol>
+    </main>
+
     <footer>
         <a href="https://github.com/martypdx/session-timer" target="_blank">
-            help
+            <span>help</span>
         </a>
     </footer>
 

@@ -1,4 +1,4 @@
-const select = document.getElementById('theme-select');
+const select = document.querySelector('select.theme');
 const html = document.querySelector('html');
 
 const THEME_KEY = 'selected-theme'
