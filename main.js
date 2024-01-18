@@ -9,23 +9,24 @@ if(Notification) {
 
 const ul = document.getElementById('sessions');
 const timer = document.getElementById('timer');
-const params = new URLSearchParams(location.search);
+
 const DEFAULT = 25;
-let minutes = DEFAULT;
-try {
-    const value = params.get('minutes') || DEFAULT;
-    if(value === 'test') {
-        minutes = 1 / 6;
+const TEST = 1 / 6;
+function getDuration() {
+    try {
+        const params = new URLSearchParams(location.search);
+        const value = params.get('minutes');
+        if(value === 'test') return TEST;
+        if(!value || isNaN(value) || value < 1) return DEFAULT;
+        return parseInt(value);
     }
-    else {
-        minutes = isNaN(value) || !(value >= 1) ? DEFAULT : parseInt(value);
+    catch(_) {
+        return DEFAULT;
     }
 }
-catch(ignore) { }
-
-let session = 1000 * 60 * minutes;
 
 const format = s => s.toString().padStart(2, '0');
+
 function updateTimeRemaining(time) {
     const ms = session - (time - start);
     const seconds = Math.round(ms / 1000);
@@ -45,6 +46,8 @@ function updateTimer() {
     return time;
 }
 
+let minutes = getDuration();
+let session = 1000 * 60 * minutes;
 startSession();
 
 function startSession() {
