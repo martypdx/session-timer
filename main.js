@@ -1,5 +1,23 @@
 import './theme.js';
 
+if(Notification) {
+    if(Notification.permission !== 'granted' && Notification.permission !== 'denied') {
+        // async
+        Notification.requestPermission();
+    }
+}
+
+function notify(message) {
+    if(Notification.permission === "granted") {
+        return new Notification(message);
+    }
+    else {
+        window.focus();
+        alert(message);
+        return null;
+    }
+}
+
 const ul = document.getElementById('sessions');
 const timer = document.getElementById('timer');
 const params = new URLSearchParams(location.search);
@@ -8,7 +26,12 @@ const DEFAULT = 25;
 let minutes = DEFAULT;
 try {
     const value = params.get('minutes') || DEFAULT;
-    minutes = isNaN(value) || !(value >= 1) ? DEFAULT : parseInt(value);
+    if(value === 'test') {
+        minutes = .1;
+    }
+    else {
+        minutes = isNaN(value) || !(value >= 1) ? DEFAULT : parseInt(value);
+    }
 }
 catch(ignore) { }
 
@@ -24,16 +47,38 @@ function updateTimeRemaining(time) {
 }
 
 updateTimeRemaining(start);
+startInterval();
 
-let interval = setInterval(() => {
-    const time = new Date();
-    updateTimeRemaining(time);
-    if(time - start > session) {
-        ul.prepend(document.createElement('li'));
-        queueMicrotask(() => {
-            alert('session complete!');
-            start = new Date();
-            updateTimeRemaining(start);
-        });
-    }
-}, 1000);
+function startInterval() {
+    let interval = setInterval(() => {
+        const time = new Date();
+        updateTimeRemaining(time);
+        if(time - start > session) {
+            clearInterval(interval);
+            ul.prepend(document.createElement('li'));
+            queueMicrotask(() => {
+                start = new Date();
+                updateTimeRemaining(start);
+                const next = () => {
+                    start = new Date();
+                    updateTimeRemaining(start);
+                    startInterval();
+                    if(notification) {
+                        notification.close();
+                        notification.removeEventListener('click', next, { once: true });
+                        notification.removeEventListener('close', next, { once: true });
+                        document.removeEventListener('click', next, { once: true });
+                    }
+                }
+
+                const notification = notify('session complete');
+                if(!notification) next();
+                else {
+                    notification.addEventListener('click', next, { once: true });
+                    notification.addEventListener('close', next, { once: true });
+                    document.addEventListener('click', next, { once: true });
+                }
+            });
+        }
+    }, 1000);
+}
