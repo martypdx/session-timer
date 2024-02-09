@@ -1,0 +1,35 @@
+{
+    "name": "flow-of-presence",
+    "version": "1.0.0",
+    "description": "workflow timer and tool",
+    "main": "main.js",
+    "type": "module",
+    "scripts": {
+        "start": "vite",
+        "test": "exit 0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/martypdx/flow-of-presence.git"
+    },
+    "keywords": [
+        "timer",
+        "pomodoro",
+        "presence",
+        "work tracking",
+        "tracking"
+    ],
+    "author": "Marty Nelson",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/martypdx/flow-of-presence/issues"
+    },
+    "homepage": "https://github.com/martypdx/flow-of-presence#readme",
+    "devDependencies": {
+        "@azothjsx/vite-plugin-azoth": "^1.0.4",
+        "vite": "^5.1.1"
+    },
+    "dependencies": {
+        "@azothjsx/azoth": "^1.0.1"
+    }
+}
