@@ -2,5 +2,7 @@
     "cSpell.words": [
         "azothjsx",
         "pomodoro"
-    ]
+    ],
+    "eslint.experimental.useFlatConfig": true,
+    "eslint.format.enable": true
 }

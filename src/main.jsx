@@ -1,5 +1,8 @@
-import './theme.js';
-import './focus.js';
+import './style.css';
+import Header from './Header.jsx';
+import './Focus.jsx';
+
+document.body.prepend(<Header />);
 
 if(Notification) {
     if(Notification.permission !== 'granted' && Notification.permission !== 'denied') {
@@ -88,7 +91,7 @@ function sessionComplete() {
 }
 
 function notify(message) {
-    if(Notification.permission === "granted") {
+    if(Notification.permission === 'granted') {
         return new Notification(message);
     }
     alert(message);

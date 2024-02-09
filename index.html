@@ -6,32 +6,13 @@
     <link rel="icon"
         href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚥</text></svg>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Presence Timer</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-
-    </style>
+    <title>Flow of Presence</title>
 </head>
 
 <body>
-    <header>
-        <section class="work-play">
-            <button>
-                <label>
-                    <input name="check-working" type="checkbox" checked>
-                </label>
-            </button>
-            <div class="focus">
-                <h1 contenteditable aria-label="priority" aria-placeholder="Declared Priority"></h1>
-                <p contenteditable aria-label="exit" aria-placeholder="Clear exist seen and understood"></p>
-            </div>
-        </section>
-        <select name="select-theme" class="theme">
-            <option value="light" title="light theme">🌇</option>
-            <option class="auto" value="" title="auto" selected>⚙️</option>
-            <option value="dark" title="dark theme">🌃</option>
-        </select>
-    </header>
+    <script type="module" src="src/custom-elements.js"></script>
+    <!--azoth templates-->
+
 
     <main>
         <ol id="sessions">
@@ -42,12 +23,12 @@
     </main>
 
     <footer>
-        <a href="https://github.com/martypdx/session-timer" target="_blank">
+        <a href="https://github.com/martypdx/flow-of-work" target="_blank">
             <span>help</span>
         </a>
     </footer>
 
-    <script type="module" src="main.js"></script>
+    <script type="module" src="src/main.jsx"></script>
 </body>
 
 </html>
