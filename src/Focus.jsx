@@ -28,13 +28,12 @@ export default function Focus() {
         onkeydown={handleEnter}></p>;
     $exit.innerHTML = initialExit;
 
-    const focus = <section class="work-play">
+    const focus = <section class="focus-play">
         <button>
             <label>
                 <input name="check-working" type="checkbox" checked />
             </label>
         </button>
-
         <div class="focus">
             {$priority}
             {$exit}
