@@ -6,6 +6,10 @@
     "type": "module",
     "scripts": {
         "start": "vite",
+        "build": "vite build",
+        "azoth:update": "npm run azoth:un && npm run azoth:i",
+        "azoth:un": "npm un -D @azoth-web/vite-plugin-azoth && npm un @azoth-web/runtime",
+        "azoth:i": "npm i -D @azoth-web/vite-plugin-azoth && npm i @azoth-web/runtime",
         "test": "exit 0"
     },
     "repository": {
@@ -26,11 +30,12 @@
     },
     "homepage": "https://github.com/martypdx/flow-of-presence#readme",
     "devDependencies": {
-        "@azoth-web/vite-plugin-azoth": "^1.2.0",
+        "@azoth-web/vite-plugin-azoth": "^1.3.3",
         "eslint": "^8.56.0",
         "vite": "^5.1.1"
     },
     "dependencies": {
-        "@azoth-web/runtime": "^1.0.1"
+        "@azoth-web/runtime": "^1.3.3",
+        "vite-plugin-inspect": "^0.8.3"
     }
 }
