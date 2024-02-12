@@ -1,6 +1,5 @@
 import './style.css';
 import Header from './Header.jsx';
-import './Focus.jsx';
 
 document.body.prepend(<Header />);
 

@@ -1,9 +1,9 @@
-import Focus from './Focus.jsx';
+import FocusPlay from './FocusPlay.jsx';
 import Theme from './Theme.jsx';
 
 export default function Header() {
     return <header>
-        <Focus />
+        <FocusPlay />
         <Theme />
     </header>;
 }

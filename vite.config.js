@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import azothPlugin from '@azothjsx/vite-plugin-azoth';
+import azothPlugin from '@azoth-web/vite-plugin-azoth';
 
 export default defineConfig({
     plugins: [
