@@ -28,14 +28,14 @@ function getDuration() {
     }
 }
 
-const format = s => s.toString().padStart(2, '0');
+const sexagesimal = s => s.toString().padStart(2, '0');
 
 function updateTimeRemaining(time) {
     const ms = session - (time - start);
     const seconds = Math.round(ms / 1000);
     const minutes = Math.trunc(seconds / 60);
     const remain = seconds % 60;
-    timer.textContent = `${format(minutes)}:${format(remain)}`;
+    timer.textContent = `${sexagesimal(minutes)}:${sexagesimal(remain)}`;
 }
 
 let start = null;

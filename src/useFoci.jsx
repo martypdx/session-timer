@@ -2,7 +2,7 @@ export function getFoci() {
     const [initialValue, setValue] = storedObject('FOCI');
     const foci = initialValue ?? [{}];
     let current = foci.at(-1);
-    console.log({ current })
+    console.log(current);
 
     function dispatch({ type, payload }) {
         if(type === 'UPDATE') {
