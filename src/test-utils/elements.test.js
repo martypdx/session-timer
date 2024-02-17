@@ -1,5 +1,5 @@
 import { describe, test } from 'vitest';
-import { compose } from '../compose/compose.js';
+import { __compose as compose } from '@azoth-web/maat';
 import './with-resolvers-polyfill.js';
 
 export const elements = [

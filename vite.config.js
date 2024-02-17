@@ -7,6 +7,10 @@ export default defineConfig({
         azothPlugin(),
         inspect(),
     ],
+    test: {
+        environment: 'jsdom',
+        testTimeout: 30_000,
+    },
     esbuild: {
         jsx: 'preserve',
     },

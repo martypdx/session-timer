@@ -4,26 +4,26 @@ export function subject(transform, options) {
         options = transform;
         transform = null;
     }
-    const [signal, generator] = junction(transform);
+    const [dispatch, generator] = junction(transform);
     const iterator = generator(options?.startWith);
-    return [signal, iterator];
+    return [dispatch, iterator];
 }
 
 export function junction(transform) {
-    const [signal, relay] = signalRelay(transform);
+    const [dispatch, relay] = dispatchRelay(transform);
     const generator = runWith(relay);
-    return [signal, generator];
+    return [dispatch, generator];
 }
 
-export function signalRelay(transform) {
+export function dispatchRelay(transform) {
     const relay = { resolve: null };
 
-    function signal(payload) {
+    function dispatch(payload) {
         if(transform) payload = transform(payload);
         relay.resolve(payload);
     }
 
-    return [signal, relay];
+    return [dispatch, relay];
 }
 
 export function runWith(relay) {
@@ -66,8 +66,8 @@ class Multicast {
     }
 
     subscriber(transform, options) {
-        const [signal, iterator] = subject(transform, options);
-        this.consumers.push(signal);
+        const [dispatch, iterator] = subject(transform, options);
+        this.consumers.push(dispatch);
         return iterator;
     }
 }
