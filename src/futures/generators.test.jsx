@@ -1,19 +1,17 @@
 import { beforeEach, test } from 'vitest';
-import { multicast, subject } from './generators.js';
+import { subject } from './generators.js';
 import '../test-utils/with-resolvers-polyfill.js';
 import { screen } from '@testing-library/dom';
-import { sleep } from './promises.js';
-import userEvent from '@testing-library/user-event';
 
 beforeEach(async context => {
     document.body.innerHTML = '';
     context.fixture = document.body;
 });
 
-test.skip('subject', async ({ fixture, expect }) => {
+test('subject', async ({ fixture, expect }) => {
 
-    const [dispatch, iterator] = subject();
-    const dom = getDOM(iterator);
+    const [asyncIterator, dispatch] = subject();
+    const dom = <div>{asyncIterator}!</div>;
     fixture.append(dom);
 
     await screen.findByText('!', { exact: false });
@@ -24,7 +22,6 @@ test.skip('subject', async ({ fixture, expect }) => {
         !
       </div>
     `);
-
 
     dispatch('Hello World');
     await screen.findByText('Hello World', { exact: false });
@@ -38,23 +35,10 @@ test.skip('subject', async ({ fixture, expect }) => {
     `);
 });
 
-function getDOM(iterator) {
-    return <div>{iterator}!</div>;
-}
-
-// test.skip('transform', async ({ expect }) => {
-//     const [dispatch, iterator] = subject(x => x ** x, { startWith: 0 });
-
-//     expect((await iterator.next()).value).toBe(0);
-//     let iteratorPromise = iterator.next();
-//     dispatch(2);
-//     expect((await iteratorPromise).value).toBe(4);
-// });
-
 // test.skip('multicast', async ({ expect }) => {
-//     const [dispatch, iterator] = subject({ startWith: 'hello' });
+//     const [asyncIterator, dispatch] = subject({ startWith: 'hello' });
 
-//     const mc = multicast(iterator);
+//     const mc = multicast(asyncIterator);
 //     const s1 = mc.subscriber();
 //     const s2 = mc.subscriber();
 //     const s3 = mc.subscriber();

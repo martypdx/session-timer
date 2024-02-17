@@ -4,36 +4,36 @@ export function subject(transform, options) {
         options = transform;
         transform = null;
     }
-    const [dispatch, generator] = junction(transform);
-    const iterator = generator(options?.startWith);
-    return [dispatch, iterator];
-}
 
-export function junction(transform) {
-    const [dispatch, relay] = dispatchRelay(transform);
-    const generator = runWith(relay);
-    return [dispatch, generator];
-}
+    let initialValue, startWith;
+    if(options) {
+        initialValue = options.initialValue;
+        startWith = options.startWith;
+        if(initialValue !== undefined) {
+            if(startWith !== undefined) {
+                throw new Error('Cannot specify both initialValue and startWith option');
+            }
+            if(!transform) {
+                throw new Error('Cannot specify initialValue without a transform function');
+            }
+        }
+    }
 
-export function dispatchRelay(transform) {
     const relay = { resolve: null };
 
     function dispatch(payload) {
         if(transform) payload = transform(payload);
-        relay.resolve(payload);
+        if(relay.resolve) relay.resolve(payload);
+        else startWith = payload;
     }
 
-    return [dispatch, relay];
-}
-
-export function runWith(relay) {
-    const { promise, resolve } = Promise.withResolvers();
-    relay.resolve = resolve;
-
-    async function* generator(initial) {
-        resolve();
-        await promise;
-        yield initial;
+    async function* generator() {
+        if(initialValue !== undefined) {
+            yield transform(initialValue);
+        }
+        if(startWith !== undefined) {
+            yield startWith;
+        }
 
         while(true) {
             const { promise, resolve } = Promise.withResolvers();
@@ -42,7 +42,8 @@ export function runWith(relay) {
         }
     }
 
-    return generator;
+    const asyncIterator = generator();
+    return [asyncIterator, dispatch];
 }
 
 
