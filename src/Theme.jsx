@@ -5,6 +5,7 @@ export default function Theme() {
     const [themeIterator, saveTheme] = useTheme();
 
     const html = document.querySelector('html');
+
     const select = <select name="select-theme" class="theme"
         onchange={({ target }) => saveTheme(target.value)}>
         <option value="light" title="light theme">🌇</option>

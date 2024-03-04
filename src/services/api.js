@@ -5,6 +5,6 @@ const KEY = 'FOP.THEME';
 
 export function useTheme() {
     const [theme, setTheme] = useLocalJSONStorage('FOP.THEME');
-    const options = theme ? { initialValue: theme } : null;
+    const options = theme ? { startWith: theme } : null;
     return subject(setTheme, options);
 }
