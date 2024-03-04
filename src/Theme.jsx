@@ -1,30 +1,21 @@
-import { useLocalStorage } from './useLocalStorage';
-
-const THEME_KEY = 'theme.mode';
-
-function useTheme() {
-    let [initialTheme, saveTheme] = useLocalStorage(THEME_KEY);
-    initialTheme = initialTheme ?? '';
-
-    const html = document.querySelector('html');
-    const setHTMLTheme = theme => html.className = theme;
-    setHTMLTheme(initialTheme);
-
-    const setTheme = (theme) => {
-        saveTheme(theme);
-        setHTMLTheme(theme);
-    };
-
-    return [initialTheme, setTheme];
-}
+import { use } from 'azoth/channels';
+import { useTheme } from './services/api';
 
 export default function Theme() {
-    const [initialTheme, setTheme] = useTheme();
+    const [themeIterator, saveTheme] = useTheme();
 
-    return <select name="select-theme" class="theme" value={initialTheme}
-        onchange={({ target }) => setTheme(target.value)}>
+    const html = document.querySelector('html');
+    const select = <select name="select-theme" class="theme"
+        onchange={({ target }) => saveTheme(target.value)}>
         <option value="light" title="light theme">🌇</option>
-        <option class="auto" value="" title="device theme" selected>🃏</option>
+        <option class="auto" title="device theme" value="" selected>🃏</option>
         <option value="dark" title="dark theme">🌃</option>
     </select>;
+
+    use(themeIterator, theme => {
+        html.className = theme;
+        select.value = theme;
+    });
+
+    return select;
 }
