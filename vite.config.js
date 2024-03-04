@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import azothPlugin from '@azoth-web/vite-plugin-azoth';
+import azothPlugin from 'azoth/vite-plugin';
 import inspect from 'vite-plugin-inspect';
 
 export default defineConfig({
@@ -17,11 +17,11 @@ export default defineConfig({
     build: {
         target: 'esnext',
         minify: false,
-        // modulePreload: false,
-        // rollupOptions: {
-        //     output: [{
-        //         format: 'es'
-        //     }]
-        // },
+        sourcemap: true,
+        rollupOptions: {
+            output: [{
+                format: 'es'
+            }]
+        },
     },
 });

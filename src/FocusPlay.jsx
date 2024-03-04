@@ -1,4 +1,4 @@
-import { getFoci } from './useFoci.jsx';
+import { getFoci } from './scratchpad/useFoci.jsx';
 
 export default function FocusPlay() {
     let [initial, dispatch] = getFoci();

@@ -24,7 +24,7 @@ export default function Theme() {
     return <select name="select-theme" class="theme" value={initialTheme}
         onchange={({ target }) => setTheme(target.value)}>
         <option value="light" title="light theme">🌇</option>
-        <option class="auto" value="" title="auto" selected>⚙️</option>
+        <option class="auto" value="" title="device theme" selected>🃏</option>
         <option value="dark" title="dark theme">🌃</option>
     </select>;
 }

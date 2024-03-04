@@ -115,13 +115,13 @@ select.theme {
 
     font-family: 'Arial';
     font-size: 2em;
-    opacity: .25;
+    opacity: .75;
     color: var(--color);
     background: transparent;
     cursor: pointer;
 }
 
-html.dark select.theme {
+html.light select.theme {
     opacity: 0.75;
 }
 
