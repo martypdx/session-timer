@@ -22,7 +22,6 @@ export default function FocusPlay() {
     return <section class="focus-play">
         <FocusPlayButton />
         <EditableFocus priority={focus.priority} exit={focus.exit} update={update} />
-        {/* <button onclick={() => dispatch({ type: 'ADD' })}>Add</button> */}
     </section>;
 }
 
