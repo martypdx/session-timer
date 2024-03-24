@@ -3,6 +3,7 @@ import azothPlugin from 'azoth/vite-plugin';
 import inspect from 'vite-plugin-inspect';
 
 export default defineConfig({
+    base: '/flow-of-presence/',
     plugins: [
         azothPlugin(),
         inspect(),
