@@ -1,24 +1,41 @@
-import { getFoci } from './scratchpad/useFoci.jsx';
+import { useLocalStorageJSON } from './services/local-storage.js';
+
+function useFocus() {
+    const [foci, saveFocus] = useLocalStorageJSON(
+        'FOP.FOCI',
+        [{ priority: 'priority', exit: 'clear exit' }]
+    );
+
+    let focus = foci.at(-1);
+
+    const update = updates => {
+        Object.assign(focus, updates);
+        saveFocus(foci);
+    };
+
+    return [focus, update];
+}
 
 export default function FocusPlay() {
-    let [initial, dispatch] = getFoci();
+    const [focus, update] = useFocus();
 
     return <section class="focus-play">
         <FocusPlayButton />
-        <Focus focus={initial[0]} update={dispatch} />
-        <button onclick={() => dispatch({ type: 'ADD' })}>Add</button>
+        <EditableFocus priority={focus.priority} exit={focus.exit} update={update} />
+        {/* <button onclick={() => dispatch({ type: 'ADD' })}>Add</button> */}
     </section>;
 }
 
 function FocusPlayButton() {
-    return <button>
+    return <button class="ico-button">
         <label>
             <input name="check-working" type="checkbox" checked />
         </label>
     </button>;
 }
 
-function Focus({ focus, update }) {
+function EditableFocus({ priority, exit, update }) {
+
     const handleEnter = ({ key, target }) => {
         if(key === 'Enter' && document.hasFocus(target)) {
             target.blur();
@@ -26,10 +43,7 @@ function Focus({ focus, update }) {
     };
 
     const handleInput = ({ target: { innerHTML, ariaLabel } }) => {
-        update({
-            type: 'UPDATE',
-            payload: [ariaLabel, innerHTML === '<br>' ? '' : innerHTML]
-        });
+        update({ [ariaLabel]: innerHTML === '<br>' ? '' : innerHTML });
     };
 
     return <div class="focus">
@@ -38,13 +52,13 @@ function Focus({ focus, update }) {
             aria-placeholder="Declared Priority"
             oninput={handleInput}
             onkeydown={handleEnter}
-            innerHTML={focus?.priority ?? ''} />
+            innerHTML={priority ?? ''} />
 
         <p contenteditable
             aria-label="exit"
             aria-placeholder="Clear exit seen and understood"
             oninput={handleInput}
             onkeydown={handleEnter}
-            innerHTML={focus?.exit ?? ''} />
+            innerHTML={exit ?? ''} />
     </div>;
 }

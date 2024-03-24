@@ -1,10 +1,11 @@
-export function useLocalValueStorage(key) {
+
+export function useLocalStorage(key) {
     const initialValue = getValue(key);
     const setValue = setKeyedValue(key);
     return [initialValue, setValue];
 }
 
-export function useLocalJSONStorage(key, defaultValue = null) {
+export function useLocalStorageJSON(key, defaultValue = null) {
     const initialValue = getObject(key) ?? defaultValue;
     const setValue = setKeyedValue(key, value => JSON.stringify(value));
     return [initialValue, setValue];
