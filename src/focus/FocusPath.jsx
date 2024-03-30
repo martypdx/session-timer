@@ -1,8 +1,6 @@
 import { branch } from 'azoth/chronos/channels';
+import { Toggle } from 'azoth/maya';
 
-function Toggle({ on: predicate }, slottable) {
-    return payload => predicate(payload) ? slottable : null;
-}
 
 export function FocusPath({ stack, add, remove }) {
     const Add = <ChangeButton onclick={add} text="add" />;
@@ -11,8 +9,8 @@ export function FocusPath({ stack, add, remove }) {
         <Toggle on={s => s.length}>
             <ChangeButton onclick={remove} text="remove" />
         </Toggle>,
-        s => s.map(focus => <Focus {...focus} />),
-        // [Focus, { map: true }],
+        [Focus, { map: true }],
+        // s => s.map(focus => <Focus {...focus} />),
     );
 
     return { Path, Add, Remove };

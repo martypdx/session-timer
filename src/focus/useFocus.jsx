@@ -8,8 +8,8 @@ const newFocus = () => ({ priority: '', exit: '' });
 export function useFocus() {
     const [foci, setLocal] = useLocalStorageJSON('FOP.FOCI', [newFocus()]);
     const save = () => setLocal(foci);
-    const [asyncFoci, changeFocus] = unicast(() => foci, null);
 
+    const [asyncFoci, changeFocus] = unicast(() => foci, null);
     const [current, stack] = branch(asyncFoci,
         foci => foci.at(-1),
         foci => foci.slice(0, -1),
