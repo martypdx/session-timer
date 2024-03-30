@@ -16,33 +16,6 @@
     --background: var(--light-background);
 }
 
-html,
-body {
-    &.light {
-        --color: var(--light-color);
-        --background: var(--light-background);
-    }
-
-    &.dark {
-        --color: var(--dark-color);
-        --background: var(--dark-background);
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    html:not(.dark) {
-        --color: var(--light-color);
-        --background: var(--light-background);
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    html:not(.light) {
-        --color: var(--dark-color);
-        --background: var(--dark-background);
-    }
-}
-
 body {
     margin: 0;
     padding: 2vw 4vw;
@@ -64,22 +37,6 @@ header {
     margin-bottom: 4vw
 }
 
-select.theme {
-    border: 0;
-    outline: 0;
-    appearance: none;
-
-    font-family: 'Arial';
-    font-size: 2em;
-    opacity: .75;
-    color: var(--color);
-    background: transparent;
-    cursor: pointer;
-}
-
-html.light select.theme {
-    opacity: 0.75;
-}
 
 #sessions {
     padding: 0;

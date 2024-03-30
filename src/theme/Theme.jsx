@@ -1,6 +1,7 @@
 import { unicast } from 'azoth/chronos/generators';
 import { consume } from 'azoth/chronos/channels';
-import { useLocalStorage } from './local-storage.js';
+import { useLocalStorage } from '../local-storage.js';
+import './Theme.css';
 
 const html = document.querySelector('html');
 

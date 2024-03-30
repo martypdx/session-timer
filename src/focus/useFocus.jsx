@@ -3,7 +3,10 @@ import { branch } from 'azoth/chronos/channels';
 import { useLocalStorageJSON } from '../local-storage.js';
 import './focus.css';
 
-const newFocus = () => ({ priority: '', exit: '' });
+const newFocus = level => ({
+    priority: level ? `level ${level}` : '',
+    exit: ''
+});
 
 export function useFocus() {
     const [foci, setLocal] = useLocalStorageJSON('FOP.FOCI', [newFocus()]);
@@ -21,7 +24,7 @@ export function useFocus() {
     };
 
     const add = () => {
-        foci.push(newFocus());
+        foci.push(newFocus(foci.length));
         save();
         changeFocus();
     };
