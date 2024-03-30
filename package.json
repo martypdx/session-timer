@@ -41,7 +41,7 @@
         "vitest": "^1.3.0"
     },
     "dependencies": {
-        "azoth": "^1.3.9",
+        "azoth": "file:../../azothjs/azoth/packages/azoth",
         "vite-plugin-inspect": "^0.8.3"
     }
 }

@@ -1,5 +1,6 @@
-import { consume, unicast } from 'azoth/channels';
-import { useLocalStorage } from './services/local-storage.js';
+import { unicast } from 'azoth/chronos/generators';
+import { consume } from 'azoth/chronos/channels';
+import { useLocalStorage } from './local-storage.js';
 
 const html = document.querySelector('html');
 

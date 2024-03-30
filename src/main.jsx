@@ -60,7 +60,9 @@ function startSession() {
 
         if(time - start > session) {
             clearInterval(interval);
-            ul.prepend(document.createElement('li'));
+            const li = document.createElement('li');
+            li.classList.add('session-circle')
+            ul.prepend(li);
             queueMicrotask(sessionComplete);
         }
     }, 1000);
