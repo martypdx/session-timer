@@ -1,7 +1,6 @@
 import { unicast } from 'azoth/chronos/generators';
 import { branch } from 'azoth/chronos/channels';
 import { useLocalStorageJSON } from '../local-storage.js';
-import './focus.css';
 
 const newFocus = level => ({
     priority: level ? `level ${level}` : '',

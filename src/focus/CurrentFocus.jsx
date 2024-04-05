@@ -8,10 +8,9 @@ export function CurrentFocus({ current, update }) {
 }
 
 function updatableFocus(update) {
+
     const handleEnter = ({ key, target }) => {
-        if(key === 'Enter' && document.hasFocus(target)) {
-            target.blur();
-        }
+        if(key === 'Enter' && document.hasFocus(target)) target.blur();
     };
 
     const handleInput = ({ target: { innerHTML, ariaLabel } }) => {

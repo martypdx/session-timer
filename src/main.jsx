@@ -1,7 +1,6 @@
-import './style.css';
-import Header from './Header.jsx';
+import App from './App.jsx';
 
-document.body.prepend(<Header />);
+document.body.prepend(<App />);
 
 if(Notification) {
     if(Notification.permission !== 'granted' && Notification.permission !== 'denied') {
@@ -61,7 +60,7 @@ function startSession() {
         if(time - start > session) {
             clearInterval(interval);
             const li = document.createElement('li');
-            li.classList.add('session-circle')
+            li.classList.add('session-circle');
             ul.prepend(li);
             queueMicrotask(sessionComplete);
         }
