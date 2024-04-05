@@ -1,0 +1,42 @@
+.current-focus {
+    display: grid;
+
+    h2:before {
+        content: '⌾';
+        position: relative;
+        top: .08em;
+        margin-right: .25em;
+    }
+
+    [contenteditable] {
+        font-size: 1.5em;
+        padding: .25em 0em;
+        margin: 0 1em 0 0;
+        transition: padding .3s ease-in-out;
+    }
+
+    [contenteditable]:hover,
+    [contenteditable]:focus {
+        padding: .25em;
+    }
+
+    [contenteditable]:hover {
+        background: #fafafa;
+        outline: 2px solid #eee;
+    }
+
+    [contenteditable]:focus {
+        background: #efefef;
+        outline: 2px solid blue;
+    }
+
+    [contenteditable]:empty:not(:focus):before {
+        content: attr(aria-placeholder);
+        opacity: .8
+    }
+
+    [contenteditable]:empty:focus:before {
+        content: ' ';
+        opacity: .8
+    }
+}

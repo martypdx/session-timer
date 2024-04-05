@@ -1,19 +1,19 @@
 import { FocusPath } from './FocusPath.jsx';
-import { CurrentFocus } from './CurrentFocus.jsx';
+import { EditableFocus } from './EditableFocus.jsx';
 import { useFocus } from './useFocus.jsx';
 import './FocusFeature.css';
 
 export default function FocusFeature() {
     const [current, stack, { update, ...changeFocus }] = useFocus();
-    const { Add, Remove, List } = <FocusPath stack={stack} {...changeFocus} />;
-
+    const { FocusStack, AddButton, RemoveButton } = <FocusPath stack={stack} {...changeFocus} />;
     return <section class="focus-play">
         <FocusPlayButton />
-        <List />
+        <FocusStack />
         <div class="focus-section">
-            <Remove className="remove-button" />
-            <CurrentFocus current={current} update={update} />
-            <Add className="add-button" />
+            <RemoveButton className="change-focus remove-button" />
+            <EditableFocus className="current-focus"
+                current={current} update={update} />
+            <AddButton className="change-focus add-button" />
         </div>
     </section>;
 }

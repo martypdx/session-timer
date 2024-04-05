@@ -38,43 +38,21 @@
 
 }
 
-.focus-section {}
 
-.current-focus {
+.focus-section {
+    display: grid;
+    grid-template-areas:
+        'current remove'
+        'add add';
+    row-gap: 1em;
 
-    p {
-        font-size: 1.2em;
+    .remove-button {
+        grid-area: remove;
+        place-self: start end;
     }
 
-    [contenteditable] {
-        font-size: 26px;
-        padding: .25em 0em;
-        margin: 1em 0;
-        transition: padding .3s ease-in-out;
-    }
-
-    [contenteditable]:hover,
-    [contenteditable]:focus {
-        padding: .25em;
-    }
-
-    [contenteditable]:hover {
-        background: #fafafa;
-        outline: 2px solid #eee;
-    }
-
-    [contenteditable]:focus {
-        background: #efefef;
-        outline: 2px solid blue;
-    }
-
-    [contenteditable]:empty:not(:focus):before {
-        content: attr(aria-placeholder);
-        opacity: .8
-    }
-
-    [contenteditable]:empty:focus:before {
-        content: ' ';
-        opacity: .8
+    .add-button {
+        grid-area: add;
+        place-self: end start;
     }
 }

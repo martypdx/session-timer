@@ -1,0 +1,53 @@
+button.change-focus {
+    margin: 0;
+    padding: .5em 1em;
+    font-size: .9em;
+    color: var(--color);
+    outline: 0;
+    border: 1px solid transparent;
+    cursor: pointer;
+    opacity: .6;
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+        opacity: 1;
+        border: 1px solid var(--color);
+    }
+}
+
+.focus-path {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: .7em;
+    width: 100%;
+    max-width: 900px;
+
+    >li {
+        margin: .75em 0;
+        display: flex;
+        align-items: center;
+
+        >* {
+            display: inline-block;
+            margin: 0;
+        }
+
+        h2:before {
+            content: '⌾';
+            position: relative;
+            top: .08em;
+            margin-right: .25em;
+        }
+
+        p {
+            margin-left: .8em;
+            text-align: center;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+    }
+
+
+
+}

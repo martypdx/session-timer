@@ -1,24 +1,28 @@
 import { branch } from 'azoth/chronos/channels';
 import { Toggle } from 'azoth/maya';
+import './FocusPath.css';
 
 export function FocusPath({ stack, add, remove }) {
-    const Add = <ChangeButton onclick={add} text="add" />;
+    const AddButton = <ChangeButton onclick={add} text="➕" />;
 
-    const [Remove, Path] = branch(stack,
+    const [RemoveButton, Path] = branch(stack,
         <Toggle on={s => s.length}>
-            <ChangeButton onclick={remove} text="remove" />
+            <ChangeButton onclick={remove} text="➖" />
         </Toggle>,
-        [Focus, { map: true }],
-        // s => s.map(focus => <Focus {...focus} />),
+        s => s.map(Focus),
     );
 
-    return { List: <ul><Path /></ul>, Add, Remove };
+    return {
+        FocusStack: <ul class="focus-path"><Path /></ul>,
+        AddButton,
+        RemoveButton
+    };
 }
 
 function Focus({ priority, exit }) {
     return <li>
-        <span class="priority">{priority}</span>
-        {exit}
+        <h2>{priority}</h2>
+        <p>{exit}</p>
     </li>;
 }
 

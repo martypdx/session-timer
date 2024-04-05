@@ -1,7 +1,8 @@
 import { consume } from 'azoth/chronos/channels';
 import { Updater } from 'azoth/maya';
+import './EditableFocus.css';
 
-export function CurrentFocus({ current, update }) {
+export function EditableFocus({ current, update }) {
     const Focus = updatableFocus(update);
     consume(current, current => Focus.update(current));
     return Focus;

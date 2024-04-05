@@ -23,13 +23,6 @@ body {
     background: var(--background);
 }
 
-button {
-    margin: 0;
-    padding: 2vw 4vw;
-    background: var(--color);
-    color: var(--background);
-}
-
 header {
     display: flex;
     justify-content: space-between;
