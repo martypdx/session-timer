@@ -8,12 +8,14 @@ export default function FocusFeature() {
     const { FocusStack, AddButton, RemoveButton } = <FocusPath stack={stack} {...changeFocus} />;
     return <section class="focus-play">
         <FocusPlayButton />
-        <FocusStack />
-        <div class="focus-section">
-            <RemoveButton className="change-focus remove-button" />
-            <EditableFocus className="current-focus"
-                current={current} update={update} />
-            <AddButton className="change-focus add-button" />
+        <div class="work-play">
+            <FocusStack />
+            <div class="focus-section">
+                <RemoveButton className="change-focus remove-button" />
+                <EditableFocus className="current-focus"
+                    current={current} update={update} />
+                <AddButton className="change-focus add-button" />
+            </div>
         </div>
     </section>;
 }

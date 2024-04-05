@@ -1,3 +1,7 @@
+.work-play {
+    display: none;
+}
+
 .focus-play {
 
     .ico-button {
@@ -8,7 +12,7 @@
         appearance: none;
         background: transparent;
 
-        &:has(input:checked)+.focus {
+        &:has(input:checked)+.work-play {
             display: block;
         }
     }
