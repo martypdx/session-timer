@@ -6,10 +6,13 @@ import './FocusFeature.css';
 export default function FocusFeature() {
     const [current, stack, { update, ...changeFocus }] = useFocus();
     const { FocusStack, AddButton, RemoveButton } = <FocusPath stack={stack} {...changeFocus} />;
+
     return <section class="focus-play">
         <FocusPlayButton />
+
         <div class="work-play">
             <FocusStack />
+
             <div class="focus-section">
                 <RemoveButton className="change-focus remove-button" />
                 <EditableFocus className="current-focus"

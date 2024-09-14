@@ -9,7 +9,7 @@ export function FocusPath({ stack, add, remove }) {
         <Toggle on={s => s.length}>
             <ChangeButton onclick={remove} text="➖" />
         </Toggle>,
-        s => s.map(Focus),
+        s => s.map(focus => <Focus {...focus} />),
     );
 
     return {
